@@ -1,0 +1,82 @@
+[
+  {
+    "icon": "assets/Icons/utilicon/kitchen.png",
+    "name": "Master's Kitchen",
+    "address": "Indian, Fast Food",
+    "time": "30 mim",
+    "rate": "4.8",
+    "location": "2.5 km"
+  },
+  {
+    "icon": "assets/Icons/utilicon/f2.jpg",
+    "name": "Master's Kitchen",
+    "address": "Indian, Fast Food",
+    "time": "45 mim",
+    "rate": "4.8",
+    "location": "2.5 km"
+  },
+  {
+    "icon": "assets/Icons/utilicon/f1.jpg",
+    "name": "Master's Kitchen",
+    "address": "Indian, Fast Food",
+    "time": "45 mim",
+    "rate": "4.8",
+    "location": "2.5 km"
+  },
+  {
+    "icon": "assets/Icons/utilicon/kitchen.png",
+    "name": "Master's Kitchen",
+    "address": "Indian, Fast Food",
+    "time": "30 mim",
+    "rate": "4.8",
+    "location": "2.5 km"
+  },
+  {
+    "icon": "assets/Icons/utilicon/f3.jpg",
+    "name": "Master's Kitchen",
+    "address": "Indian, Fast Food",
+    "time": "30 mim",
+    "rate": "4.8",
+    "location": "2.5 km"
+  },
+  {
+    "icon": "assets/Icons/utilicon/kitchen.png",
+    "name": "Master's Kitchen",
+    "address": "Indian, Fast Food",
+    "time": "30 mim",
+    "rate": "4.8",
+    "location": "2.5 km"
+  },
+  {
+    "icon": "assets/Icons/utilicon/f2.jpg",
+    "name": "Master's Kitchen",
+    "address": "Indian, Fast Food",
+    "time": "45 mim",
+    "rate": "4.8",
+    "location": "2.5 km"
+  },
+  {
+    "icon": "assets/Icons/utilicon/f1.jpg",
+    "name": "Master's Kitchen",
+    "address": "Indian, Fast Food",
+    "time": "45 mim",
+    "rate": "4.8",
+    "location": "2.5 km"
+  },
+  {
+    "icon": "assets/Icons/utilicon/kitchen.png",
+    "name": "Master's Kitchen",
+    "address": "Indian, Fast Food",
+    "time": "30 mim",
+    "rate": "4.8",
+    "location": "2.5 km"
+  },
+  {
+    "icon": "assets/Icons/utilicon/f3.jpg",
+    "name": "Master's Kitchen",
+    "address": "Indian, Fast Food",
+    "time": "30 mim",
+    "rate": "4.8",
+    "location": "2.5 km"
+  }
+]

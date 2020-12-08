@@ -1,0 +1,18 @@
+[
+  {
+    "icon": "assets/Icons/utilicon/breakfast.png",
+    "name": "BreakFast"
+  },
+  {
+    "icon": "assets/Icons/utilicon/lunch.png",
+    "name": "Lunch"
+  },
+  {
+    "icon": "assets/Icons/utilicon/snacks.png",
+    "name": "Snacks"
+  },
+  {
+    "icon": "assets/Icons/utilicon/dinner.png",
+    "name": "Dinner"
+  }
+]
