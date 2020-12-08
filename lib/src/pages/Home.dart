@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'NearestRest.dart';
 import 'Restrurent.dart';
 import 'Search.dart';
+import 'profile.dart';
+
 class Home extends StatefulWidget {
   final List<String> list = List.generate(10, (index) => "dominos");
 
@@ -20,18 +22,28 @@ class _HomeState extends State<Home> {
           appBar: AppBar(
             shadowColor: Colors.green,
             backgroundColor: Colors.green,
-            leading: Builder(
-              builder: (BuildContext context) {
-                return IconButton(
-                  icon: const Icon(Icons.logout,color: Colors.white,),
-                  onPressed: () {
-                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context)=>LoginPage()),ModalRoute.withName("login"));
-
-                  },
-                  // tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-                );
-              },
-            ),
+            // leading: Container(
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            //       IconButton(
+            //         icon: const Icon(
+            //           Icons.logout,
+            //           color: Colors.white,
+            //         ),
+            //         onPressed: () {
+            //           Navigator.of(context).pushAndRemoveUntil(
+            //               MaterialPageRoute(
+            //                   builder: (BuildContext context) => LoginPage()),
+            //               ModalRoute.withName("login"));
+            //         },
+            //         // tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            //       ),
+            //
+            //     ],
+            //   ),
+            // ),
             actions: <Widget>[
               IconButton(
                 onPressed: () {
@@ -39,16 +51,68 @@ class _HomeState extends State<Home> {
                       .then((value) => {print("value " + value)})
                       .catchError((onError) => {print("error " + onError)});
                 },
-                icon: Icon(Icons.search,color: Colors.white,),
+                icon: Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ),
               ),
-
             ],
-            centerTitle: true,
+            centerTitle: false,
+            title: Container(
+              child: Row(
+                children: [
+                  IconButton(
+                    padding: EdgeInsets.all(5.0),
+                    icon: const Icon(
+                      Icons.logout,
+                      color: Colors.white,
+
+                    ),
+                    onPressed: () {
+                      print("profilecalled");
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) => LoginPage()),
+                                    ModalRoute.withName("login"));
+                    },
+                    // tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                  ),
+                  IconButton(
+                    padding: EdgeInsets.all(5.0),
+                    icon: const Icon(
+                      Icons.person,
+                      color: Colors.white,
+
+                    ),
+                    onPressed: () {
+                      print("profilecalled");
+                      Navigator.of(context).push(new MaterialPageRoute(
+                          builder: (BuildContext context) => ProfilePage()));
+                    },
+                    // tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                  ),
+                ],
+              ),
+            ),
             bottom: TabBar(
+              indicatorColor:Colors.white,
               tabs: [
-                Tab(icon: Icon(Icons.local_cafe,color: Colors.white,)),
-                Tab(icon: Icon(Icons.location_pin,color: Colors.white,)),
-                Tab(icon: Icon(Icons.location_city,color: Colors.white,)),
+                Tab(
+
+                    icon: Icon(
+                  Icons.local_cafe,
+                  color: Colors.white,
+                )),
+                Tab(
+                    icon: Icon(
+                  Icons.location_pin,
+                  color: Colors.white,
+                )),
+                Tab(
+                    icon: Icon(
+                  Icons.location_city,
+                  color: Colors.white,
+                )),
               ],
             ),
           ),

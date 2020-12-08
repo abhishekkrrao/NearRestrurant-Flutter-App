@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Home.dart';
+
 class SignUpPage extends StatefulWidget {
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
+
 saveValue() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setString("email", "a@gmail.com");
 }
+
 //TextInput
 Widget TextInput(hintData, labelData, type) {
   return SizedBox(
@@ -35,18 +38,20 @@ Widget TextInput(hintData, labelData, type) {
         obscureText: type == "email" ? false : true,
       ));
 }
+
 //Buttom
 Widget customButtom(BuildContext context) {
   return SizedBox(
-    width: MediaQuery.of(context).size.width/2,
+    width: MediaQuery.of(context).size.width / 2,
     height: 46,
     child: Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       color: Colors.green,
       child: GestureDetector(
-        onTap: (){
-
-          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context)=>Home()),ModalRoute.withName("Home"));
+        onTap: () {
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (BuildContext context) => Home()),
+              ModalRoute.withName("Home"));
           saveValue();
         },
         child: Center(
@@ -73,39 +78,46 @@ Widget customButtom(BuildContext context) {
     ),
   );
 }
+
 //Logo
 Widget logoWidget(String path) {
   return Center(
-    child:Image(
+    child: Image(
       height: 96,
       width: 96,
       image: AssetImage(path),
     ),
   );
 }
+
 //Social Buttons
-Widget socialLoginWidget(BuildContext context){
+Widget socialLoginWidget(BuildContext context) {
   return Row(
     children: [
       SizedBox(
         height: 45,
-        width: ((MediaQuery.of(context).size.width)/2),
+        width: ((MediaQuery.of(context).size.width) / 2),
         child: logoWidget("assets/fb.png"),
       ),
       SizedBox(
         height: 45,
-        width: ((MediaQuery.of(context).size.width)/5),
+        width: ((MediaQuery.of(context).size.width) / 5),
         child: logoWidget("assets/g.png"),
       ),
     ],
   );
 }
+
 class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          elevation:0
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () => {Navigator.of(context).pop()},
+        ),
       ),
       backgroundColor: Colors.white,
       body: Padding(
@@ -117,11 +129,11 @@ class _SignUpPageState extends State<SignUpPage> {
             children: <Widget>[
               logoWidget("assets/General/app.png"),
               Padding(
-                padding: EdgeInsets.only(top: 0,bottom: 5),
+                padding: EdgeInsets.only(top: 0, bottom: 5),
                 child: socialLoginWidget(context),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 15,top: 5),
+                padding: EdgeInsets.only(bottom: 15, top: 5),
                 child: Text("Get in using social account ."),
               ),
               Padding(
@@ -138,14 +150,14 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20),
-                child:Center(
+                child: Center(
                   child: Text("Already Register"),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20),
-                child:GestureDetector(
-                  onTap: (){
+                child: GestureDetector(
+                  onTap: () {
                     Navigator.of(context).pop();
                   },
                   child: Center(
@@ -159,5 +171,4 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
     );
   }
-
 }
