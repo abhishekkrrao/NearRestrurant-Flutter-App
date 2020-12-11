@@ -1,6 +1,8 @@
 import 'package:eshop/src/pages/More.dart';
 import 'package:eshop/src/pages/Restrurent.dart';
 import 'package:flutter/material.dart';
+
+import 'Specific.dart';
 class Search extends SearchDelegate {
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -60,7 +62,7 @@ class Search extends SearchDelegate {
           leading: query.isEmpty ? Icon(Icons.access_time) : SizedBox(),
           onTap: (){
             Navigator.of(context).push(new MaterialPageRoute(
-                builder: (BuildContext context) => More()));
+                builder: (BuildContext context) => Specific(selectedResult)));
             selectedResult = suggestionList[index];
             showResults(context);
           },

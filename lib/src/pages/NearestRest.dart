@@ -71,13 +71,19 @@ class NearRestrurentState extends State<NearRestrurent> {
         margin: EdgeInsets.all(5.0),
         child: Column(
           children: [
-            Image(
-              image: AssetImage(restModel.icon),
-              width: double.infinity,
-              height: 120,
-              fit: BoxFit.fill,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15.0),
+              child: Image(
+                image: AssetImage(restModel.icon),
+                width: double.infinity,
+                height: 120,
+                fit: BoxFit.fill,
+              ),
             ),
-            Text(restModel.title),
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Text(restModel.title),
+            )
           ],
         ),
       ),

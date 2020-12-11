@@ -97,8 +97,8 @@ class RestrurentState extends State<Restrurent> {
                 decorator: DotsDecorator(
                   // activeColor: Color(int.parse("0xFF003975")),
                   activeColor: Colors.green,
-                  size: const Size.square(9.0),
-                  activeSize: const Size(18.0, 9.0),
+                  size: const Size.square(7.0),
+                  activeSize: const Size(28.0, 7.0),
                   activeShape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0)),
                 ),
@@ -165,20 +165,29 @@ class RestrurentState extends State<Restrurent> {
   Widget singleGridView(RestModel restModel) {
     return SizedBox(
       width: double.infinity,
-      height: 135,
+      height: 125,
       child: Container(
         color: Colors.white,
         margin: EdgeInsets.all(5.0),
-        child: Column(
-          children: [
-            Image(
-              image: AssetImage(restModel.icon),
-              width: double.infinity,
-              height: 120,
-              fit: BoxFit.fill,
-            ),
-            Text(restModel.title),
-          ],
+        child:ClipRRect(
+          borderRadius:BorderRadius.circular(15),
+          child:  Column(
+            children: [
+              ClipRRect(
+                borderRadius:BorderRadius.circular(15),
+                child: Image(
+                  image: AssetImage(restModel.icon),
+                  width: double.infinity,
+                  height: 120,
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Text(restModel.title),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -199,7 +208,7 @@ class RestrurentState extends State<Restrurent> {
         child: Column(
           children: [
            Padding(
-             padding: EdgeInsets.all(5.0),
+             padding: EdgeInsets.only(top: 12),
              child:  ClipRRect(
                borderRadius:BorderRadius.circular(5),
                child:Image(

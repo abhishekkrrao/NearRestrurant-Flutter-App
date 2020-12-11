@@ -1,12 +1,13 @@
 import 'package:eshop/src/model/RestModel.dart';
-import 'package:eshop/src/model/Slider.dart';
 import 'package:eshop/src/service/service.dart';
 import 'package:flutter/material.dart';
-class More extends StatefulWidget {
+class Specific extends StatefulWidget {
+  Specific(this.selectedResult);
+  String selectedResult;
   @override
-  MoreState createState() => MoreState();
+  SpecificState createState() => SpecificState();
 }
-class MoreState extends State<More> {
+class SpecificState extends State<Specific> {
   final ScrollController _scrollController = ScrollController();
   List<RestModel> arrayListGrid;
   @override
@@ -28,6 +29,10 @@ class MoreState extends State<More> {
   // ignore: non_constant_identifier_names
   Widget ViewIt() {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.selectedResult,style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.green,
+      ),
       body: CustomScrollView(
         controller: _scrollController,
         slivers: <Widget>[
@@ -67,25 +72,22 @@ class MoreState extends State<More> {
       child: Container(
         color: Colors.white,
         margin: EdgeInsets.all(5.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(15.0),
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image(
-                  image: AssetImage(restModel.icon),
-                  width: double.infinity,
-                  height: 120,
-                  fit: BoxFit.fill,
-                ),
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15.0),
+              child: Image(
+                image: AssetImage(restModel.icon),
+                width: double.infinity,
+                height: 120,
+                fit: BoxFit.fill,
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text(restModel.title),
-              )
-            ],
-          ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Text(restModel.title),
+            )
+          ],
         ),
       ),
     );

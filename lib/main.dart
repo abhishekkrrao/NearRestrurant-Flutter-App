@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme.copyWith(
         textTheme: GoogleFonts.muliTextTheme(
           Theme.of(context).textTheme,
-
         ),
       ),
       initialRoute: '/',
