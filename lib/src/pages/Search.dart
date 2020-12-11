@@ -1,3 +1,5 @@
+import 'package:eshop/src/pages/More.dart';
+import 'package:eshop/src/pages/Restrurent.dart';
 import 'package:flutter/material.dart';
 class Search extends SearchDelegate {
   @override
@@ -57,6 +59,8 @@ class Search extends SearchDelegate {
           ),
           leading: query.isEmpty ? Icon(Icons.access_time) : SizedBox(),
           onTap: (){
+            Navigator.of(context).push(new MaterialPageRoute(
+                builder: (BuildContext context) => More()));
             selectedResult = suggestionList[index];
             showResults(context);
           },

@@ -5,14 +5,11 @@ import 'NearestRest.dart';
 import 'Restrurent.dart';
 import 'Search.dart';
 import 'profile.dart';
-
 class Home extends StatefulWidget {
   final List<String> list = List.generate(10, (index) => "dominos");
-
   @override
   _HomeState createState() => _HomeState();
 }
-
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
@@ -66,14 +63,13 @@ class _HomeState extends State<Home> {
                     icon: const Icon(
                       Icons.logout,
                       color: Colors.white,
-
                     ),
                     onPressed: () {
                       print("profilecalled");
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) => LoginPage()),
-                                    ModalRoute.withName("login"));
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => LoginPage()),
+                          ModalRoute.withName("login"));
                     },
                     // tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
                   ),
@@ -82,7 +78,6 @@ class _HomeState extends State<Home> {
                     icon: const Icon(
                       Icons.person,
                       color: Colors.white,
-
                     ),
                     onPressed: () {
                       print("profilecalled");
@@ -95,10 +90,9 @@ class _HomeState extends State<Home> {
               ),
             ),
             bottom: TabBar(
-              indicatorColor:Colors.white,
+              indicatorColor: Colors.white,
               tabs: [
                 Tab(
-
                     icon: Icon(
                   Icons.local_cafe,
                   color: Colors.white,

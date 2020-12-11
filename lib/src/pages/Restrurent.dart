@@ -5,6 +5,7 @@ import 'package:eshop/src/component/SliderCell.dart';
 import 'package:eshop/src/model/RestModel.dart';
 import 'package:eshop/src/model/Slider.dart';
 import 'package:eshop/src/service/service.dart';
+import 'package:eshop/src/themes/theme.dart';
 import 'package:flutter/material.dart';
 
 class Restrurent extends StatefulWidget {
@@ -15,7 +16,7 @@ class Restrurent extends StatefulWidget {
 class RestrurentState extends State<Restrurent> {
   final ScrollController _scrollController = ScrollController();
   List<SliderModel> arrayList;
-  List<RestModel> arrayListGrid;
+  List<RestModel> arrayListGrid = [];
   double _current = 0;
   List<String> imageList = [
     "assets/Icons/utilicon/f1.jpg",
@@ -26,14 +27,26 @@ class RestrurentState extends State<Restrurent> {
   @override
   initState() {
     super.initState();
-    initValue();
+
+    initValue().then((value) => { setState(() {
+      arrayList = value;
+    })});
+    initGrid().then((value) => { setState(() {
+      arrayListGrid = value;
+    })});
   }
 
-  void initValue() async {
+  Future<List<SliderModel>> initValue() async {
     Future<List<SliderModel>> list = Services.getSliderJson();
-    arrayList = await list;
+    // arrayList = await list;
+    return list;
+    // Future<List<RestModel>> listGrid = Services.getJson();
+    // arrayListGrid = await listGrid;
+  }
+  Future<List<RestModel>> initGrid() async {
     Future<List<RestModel>> listGrid = Services.getJson();
-    arrayListGrid = await listGrid;
+    // arrayListGrid = await listGrid;
+    return listGrid;
   }
 
   List<Widget> getPageList(List<String> image) {
@@ -51,6 +64,7 @@ class RestrurentState extends State<Restrurent> {
   // ignore: non_constant_identifier_names
   Widget ViewIt() {
     return Scaffold(
+      backgroundColor: Colors.grey.shade50,
       body: CustomScrollView(
         controller: _scrollController,
         slivers: <Widget>[
@@ -94,13 +108,13 @@ class RestrurentState extends State<Restrurent> {
           SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.only(left: 5),
-              child: Text("Meal",style: TextStyle(fontSize: 21),),
+              child: Text("Meal",style: AppTheme.h2Style,),
             ),
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 110.0,
-              width: 110.0,
+              height: 96.0,
+              width: 96.0,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
@@ -119,7 +133,7 @@ class RestrurentState extends State<Restrurent> {
           SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.only(left: 5),
-              child: Text("Top Restrurent",style: TextStyle(fontSize: 21),),
+              child: Text("Top Restrurant",style: AppTheme.h2Style,),
             ),
           ),
           SliverGrid(
@@ -146,9 +160,12 @@ class RestrurentState extends State<Restrurent> {
     );
   }
 
+  //Top Restrurant
+
   Widget singleGridView(RestModel restModel) {
     return SizedBox(
       width: double.infinity,
+      height: 135,
       child: Container(
         color: Colors.white,
         margin: EdgeInsets.all(5.0),
@@ -167,15 +184,16 @@ class RestrurentState extends State<Restrurent> {
     );
   }
 
+  //Meal Slidder
 
 
   Widget singleView(SliderModel sliderModel) {
     return SizedBox(
-      width: 100,
-      height: 100,
+      width: 96,
+      height: 56,
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5.0)
+          borderRadius: BorderRadius.circular(56.0)
         ),
         color: Colors.white,
         child: Column(
@@ -186,13 +204,16 @@ class RestrurentState extends State<Restrurent> {
                borderRadius:BorderRadius.circular(5),
                child:Image(
                  image: AssetImage(sliderModel.icon),
-                 height: 66.0,
-                 width: 66,
+                 height: 34.0,
+                 width: 34.0,
                  fit: BoxFit.fill,
                ),
              ),
            ),
-            Text(sliderModel.title),
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Text(sliderModel.title,style: AppTheme.h7Style,),
+            )
           ],
         ),
       ),

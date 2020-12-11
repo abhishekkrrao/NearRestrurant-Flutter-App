@@ -12,11 +12,13 @@ class MoreState extends State<More> {
   @override
   initState() {
     super.initState();
-    initAnother();
+    initGrid().then((value) => { setState(() {
+      arrayListGrid = value;
+    })});
   }
-  void initAnother() async {
+  Future<List<RestModel>> initGrid() async {
     Future<List<RestModel>> listGrid = Services.getJson();
-    arrayListGrid = await listGrid;
+    return listGrid;
   }
   @override
   Widget build(BuildContext context) {

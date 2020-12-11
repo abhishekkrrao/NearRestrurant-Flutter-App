@@ -13,12 +13,13 @@ class NearRestrurentState extends State<NearRestrurent> {
   @override
   initState() {
     super.initState();
-    initValue();
+    initGrid().then((value) => { setState(() {
+      arrayListGrid = value;
+    })});
   }
-
-  void initValue() async {
+  Future<List<RestModel>> initGrid() async {
     Future<List<RestModel>> listGrid = Services.getJson();
-    arrayListGrid = await listGrid;
+    return listGrid;
   }
 
   @override

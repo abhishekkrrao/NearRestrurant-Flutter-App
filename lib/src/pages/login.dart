@@ -155,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                         builder: (BuildContext context) => new SignUpPage()));
                   },
                   child: Center(
-                    child: Text("Sign Up"),
+                    child: Text("Sign Up",),
                   ),
                 ),
               ),
