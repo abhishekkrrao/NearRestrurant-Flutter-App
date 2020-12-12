@@ -32,6 +32,13 @@ class SpecificState extends State<Specific> {
       appBar: AppBar(
         title: Text(widget.selectedResult,style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.green,
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () => {Navigator.of(context).pop()},
+        ),
       ),
       body: CustomScrollView(
         controller: _scrollController,
