@@ -1,7 +1,4 @@
-import 'package:eshop/src/pages/More.dart';
-import 'package:eshop/src/pages/Restrurent.dart';
 import 'package:flutter/material.dart';
-
 import 'Specific.dart';
 class Search extends SearchDelegate {
   @override
