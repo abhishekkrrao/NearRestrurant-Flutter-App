@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1087650456891",
+    "project_id": "eshop-8055c",
+    "storage_bucket": "eshop-8055c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087650456891:android:9c7120d7a7e53568e5031e",
+        "android_client_info": {
+          "package_name": "com.eshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087650456891-bv1pl7f5pp64s0eqc33h2h7asq6719cc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUhpTqRRZi_zMpaMRgL--zyBjS3RIygrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087650456891-bv1pl7f5pp64s0eqc33h2h7asq6719cc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1087650456891-drhsgcmf06fk2r4luaun5lu6ed91e4ca.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eshop"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

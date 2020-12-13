@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eshop/src/pages/Home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'signup.dart';
 
@@ -7,7 +10,6 @@ class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
-
 //TextInput
 Widget TextInput(hintData, labelData, type) {
   return SizedBox(
@@ -33,12 +35,10 @@ Widget TextInput(hintData, labelData, type) {
         obscureText: type == "email" ? false : true,
       ));
 }
-
 saveValue() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setString("email", "a@gmail.com");
 }
-
 //Buttom
 Widget customButtom(BuildContext context) {
   return SizedBox(
@@ -79,36 +79,19 @@ Widget customButtom(BuildContext context) {
   );
 }
 
-//Logo
-Widget logoWidget(String path) {
-  return Center(
-    child: Image(
-      height: 96,
-      width: 96,
-      image: AssetImage(path),
-    ),
-  );
-}
-
-//Social Buttons
-Widget socialLoginWidget(BuildContext context) {
-  return Row(
-    children: [
-      SizedBox(
-        height: 45,
-        width: ((MediaQuery.of(context).size.width) / 2),
-        child: logoWidget("assets/fb.png"),
-      ),
-      SizedBox(
-        height: 45,
-        width: ((MediaQuery.of(context).size.width) / 5),
-        child: logoWidget("assets/g.png"),
-      ),
-    ],
-  );
-}
-
 class _LoginPageState extends State<LoginPage> {
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  SharedPreferences prefs;
+  User currentUser;
+  @override
+  void initState() {
+    super.initState();
+    initvalue();
+  }
+  void initvalue() async {
+    prefs = await SharedPreferences.getInstance();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -163,23 +146,88 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: Colors.green,
-      //   onPressed: () {
-      //     saveValue();
+    );
+  }
 
-      //   },
-      //   child: Center(
-      //     child: Row(
-      //       mainAxisAlignment: MainAxisAlignment.center,
-      //       crossAxisAlignment: CrossAxisAlignment.center,
-      //       children: [
-      //         Text("Skip",style: TextStyle(fontSize: 11),),
-      //         Icon(Icons.arrow_forward_ios, size: 11)
-      //       ],
-      //     ),
-      //   ),
-      // ),
+  Future<Null> handleSignIn() async {
+    prefs = await SharedPreferences.getInstance();
+    GoogleSignInAccount googleUser = await googleSignIn.signIn();
+    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    User firebaseUser = (await firebaseAuth.signInWithCredential(credential)).user;
+    try{
+      if (firebaseUser != null) {
+        // Check is already sign up
+        final QuerySnapshot result = await FirebaseFirestore.instance
+            .collection('users')
+            .where('id', isEqualTo: firebaseUser.uid)
+            .get();
+        final List<DocumentSnapshot> documents = result.docs;
+        if (documents.length == 0) {
+          // Update data to server if new user
+          FirebaseFirestore.instance
+              .collection('users')
+              .doc(firebaseUser.uid)
+              .set({
+            'nickname': firebaseUser.displayName,
+            'photoUrl': firebaseUser.photoURL,
+            'id': firebaseUser.uid,
+            'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
+            'chattingWith': null
+          });
+          // Write data to local
+          currentUser = firebaseUser;
+          await prefs.setString('id', currentUser.uid);
+          await prefs.setString('nickname', currentUser.displayName);
+          await prefs.setString('photoUrl', currentUser.photoURL);
+        } else {
+          // Write data to local
+          await prefs.setString('id', documents[0].data()['id']);
+          await prefs.setString('nickname', documents[0].data()['nickname']);
+          await prefs.setString('photoUrl', documents[0].data()['photoUrl']);
+          await prefs.setString('aboutMe', documents[0].data()['aboutMe']);
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (BuildContext context) => Home()),
+              ModalRoute.withName("Home"));
+        }
+      } else {
+        // Fluttertoast.showToast(msg: "Sign in fail");
+      }
+    }catch(error){
+      print(error);
+    }
+  }
+  //Logo
+  Widget logoWidget(String path) {
+    return Center(
+      child: Image(
+        height: 96,
+        width: 96,
+        image: AssetImage(path),
+      ),
+    );
+  }
+//Social Buttons
+  Widget socialLoginWidget(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          height: 45,
+          width: ((MediaQuery.of(context).size.width) / 2),
+          child: logoWidget("assets/fb.png"),
+        ),
+        SizedBox(
+          height: 45,
+          width: ((MediaQuery.of(context).size.width) / 5),
+          child: GestureDetector(
+            onTap: (){this.handleSignIn();},
+            child: logoWidget("assets/g.png"),
+          ),
+        ),
+      ],
     );
   }
 }

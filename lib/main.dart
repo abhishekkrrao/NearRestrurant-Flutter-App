@@ -1,10 +1,17 @@
 import 'package:eshop/src/pages/Home.dart';
 import 'package:eshop/src/pages/login.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'src/themes/theme.dart';
-void main() => runApp(MyApp());
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,7 +20,9 @@ class MyApp extends StatelessWidget {
       title: 'E-Commerce ',
       theme: AppTheme.lightTheme.copyWith(
         textTheme: GoogleFonts.muliTextTheme(
-          Theme.of(context).textTheme,
+          Theme
+              .of(context)
+              .textTheme,
         ),
       ),
       initialRoute: '/',
@@ -28,6 +37,7 @@ class MyApp extends StatelessWidget {
 // ignore: must_be_immutable
 class LandingPage extends StatelessWidget {
   bool isAuth = false;
+
   Future<bool> _getValue() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     // print("email= "+prefs.getString("email"));
@@ -35,6 +45,7 @@ class LandingPage extends StatelessWidget {
     await isAuth;
     return isAuth;
   }
+
   @override
   Widget build(BuildContext context) {
     _getValue().then((success) {

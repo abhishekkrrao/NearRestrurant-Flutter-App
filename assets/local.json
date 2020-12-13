@@ -2,10 +2,11 @@
   {
     "icon": "assets/Icons/utilicon/kitchen.png",
     "name": "Master's Kitchen",
-    "address": "Indian, Fast Food",
+    "address": "Indian, Fast Food,Indian, Fast Food,Indian, Fast Food,Indian, Fast Food,Indian, Fast Food",
     "time": "30 mim",
     "rate": "4.8",
-    "location": "2.5 km"
+    "location": "2.5 km",
+    "price": "$ 25"
   },
   {
     "icon": "assets/Icons/utilicon/f2.jpg",
@@ -13,7 +14,8 @@
     "address": "Indian, Fast Food",
     "time": "45 mim",
     "rate": "4.8",
-    "location": "2.5 km"
+    "location": "2.5 km",
+    "price": "$ 25"
   },
   {
     "icon": "assets/Icons/utilicon/f1.jpg",
@@ -21,7 +23,8 @@
     "address": "Indian, Fast Food",
     "time": "45 mim",
     "rate": "4.8",
-    "location": "2.5 km"
+    "location": "2.5 km",
+    "price": "$ 25"
   },
   {
     "icon": "assets/Icons/utilicon/kitchen.png",
@@ -29,7 +32,8 @@
     "address": "Indian, Fast Food",
     "time": "30 mim",
     "rate": "4.8",
-    "location": "2.5 km"
+    "location": "2.5 km",
+    "price": "$ 25"
   },
   {
     "icon": "assets/Icons/utilicon/f3.jpg",
@@ -37,7 +41,8 @@
     "address": "Indian, Fast Food",
     "time": "30 mim",
     "rate": "4.8",
-    "location": "2.5 km"
+    "location": "2.5 km",
+    "price": "$ 25"
   },
   {
     "icon": "assets/Icons/utilicon/kitchen.png",
@@ -45,7 +50,8 @@
     "address": "Indian, Fast Food",
     "time": "30 mim",
     "rate": "4.8",
-    "location": "2.5 km"
+    "location": "2.5 km",
+    "price": "$ 25"
   },
   {
     "icon": "assets/Icons/utilicon/f2.jpg",
@@ -53,7 +59,8 @@
     "address": "Indian, Fast Food",
     "time": "45 mim",
     "rate": "4.8",
-    "location": "2.5 km"
+    "location": "2.5 km",
+    "price": "$ 25"
   },
   {
     "icon": "assets/Icons/utilicon/f1.jpg",
@@ -61,7 +68,8 @@
     "address": "Indian, Fast Food",
     "time": "45 mim",
     "rate": "4.8",
-    "location": "2.5 km"
+    "location": "2.5 km",
+    "price": "$ 25"
   },
   {
     "icon": "assets/Icons/utilicon/kitchen.png",
@@ -69,7 +77,8 @@
     "address": "Indian, Fast Food",
     "time": "30 mim",
     "rate": "4.8",
-    "location": "2.5 km"
+    "location": "2.5 km",
+    "price": "$ 25"
   },
   {
     "icon": "assets/Icons/utilicon/f3.jpg",
@@ -77,6 +86,7 @@
     "address": "Indian, Fast Food",
     "time": "30 mim",
     "rate": "4.8",
-    "location": "2.5 km"
+    "location": "2.5 km",
+    "price": "$ 25"
   }
 ]

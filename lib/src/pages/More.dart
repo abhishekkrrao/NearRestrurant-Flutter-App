@@ -40,7 +40,7 @@ class MoreState extends State<More> {
           SliverGrid(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 1.1,
+              childAspectRatio: 0.9,
             ),
             delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
@@ -83,7 +83,29 @@ class MoreState extends State<More> {
               Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Text(restModel.title),
-              )
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 2, left: 5),
+                    child: Text(restModel.price),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 2, left: 15),
+                    child: Text(restModel.time),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 2, left: 15),
+                    child: Text(restModel.rate),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 5),
+                child: Text(restModel.address,maxLines: 1,textAlign: TextAlign.center,),
+              ),
             ],
           ),
         ),
